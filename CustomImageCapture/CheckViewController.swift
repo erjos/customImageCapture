@@ -19,6 +19,10 @@ class CheckViewController: UIViewController {
         frontImage.addGestureRecognizer(frontTap)
         rearImage.addGestureRecognizer(rearTap)
     }
+    
+    @IBAction func unwindToCheckView(_ segue: UIStoryboardSegue){
+        let photoVC = segue.source as! PhotoViewController
+    }
 
     @objc func openCamera(_ sender: UITapGestureRecognizer){
         sideLabel = (sender.view == frontImage) ? "FRONT OF CHECK" : "BACK OF CHECK"

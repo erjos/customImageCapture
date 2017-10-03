@@ -15,9 +15,14 @@ class PhotoViewController: UIViewController {
     
     @IBAction func didPressCancel(_ sender: Any) {
         AppUtility.lockOrientation(.portrait, andRotateTo: .portrait)
-        self.dismiss(animated: true, completion: nil)
+        
+        //alternatively may be able to create an unwind inline using the unwind method
+        performSegue(withIdentifier: "unwindCheckView", sender: self)
     }
     @IBAction func didPressUse(_ sender: Any) {
+        //store the UIIMage locally and in whatever format we need to pass that data to the service
+        //cache images
+        performSegue(withIdentifier: "unwindCheckView", sender: self)
     }
     @IBAction func didPressRedo(_ sender: Any) {
         

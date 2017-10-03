@@ -387,9 +387,11 @@
                         <outlet property="overlayView" destination="adV-64-Ic7" id="J4O-FO-QVi"/>
                         <outlet property="previewView" destination="w5D-lC-eWH" id="bGN-3b-1Ch"/>
                         <outlet property="sideLabel" destination="q2l-fp-rIB" id="P3d-LY-wBy"/>
+                        <segue destination="xmV-J5-qnY" kind="unwind" identifier="unwindCheckView" unwindAction="unwindToCheckView:" id="2LN-46-dsl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <exit id="xmV-J5-qnY" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="139.880059970015" y="95.200000000000003"/>
         </scene>
