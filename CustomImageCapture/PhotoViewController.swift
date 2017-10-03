@@ -7,6 +7,11 @@ class PhotoViewController: UIViewController {
     @IBOutlet weak var overlayView: UIView!
     @IBOutlet weak var capturedImage: UIImageView!
     @IBOutlet weak var previewView: UIView!
+    @IBAction func didPressCancel(_ sender: Any) {
+        self.previewView.isHidden = false
+        self.capturedImage.isHidden = true
+    }
+    
     @IBAction func didPressTakePhoto(_ sender: Any) {
         //Configure Data Connection
         
