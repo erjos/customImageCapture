@@ -6,13 +6,26 @@ class PhotoViewController: UIViewController {
 
     var labelString: String?
     
+    @IBOutlet weak var captureButton: UIButton!
+    @IBOutlet weak var buttonView: UIView!
     @IBOutlet weak var sideLabel: UILabel!
     @IBOutlet weak var overlayView: UIView!
     @IBOutlet weak var capturedImage: UIImageView!
     @IBOutlet weak var previewView: UIView!
+    
     @IBAction func didPressCancel(_ sender: Any) {
+        AppUtility.lockOrientation(.portrait, andRotateTo: .portrait)
+        self.dismiss(animated: true, completion: nil)
+    }
+    @IBAction func didPressUse(_ sender: Any) {
+    }
+    @IBAction func didPressRedo(_ sender: Any) {
+        
+        //prep for photo
         self.previewView.isHidden = false
         self.capturedImage.isHidden = true
+        self.captureButton.isHidden = false
+        self.buttonView.isHidden = true
     }
     
     @IBAction func didPressTakePhoto(_ sender: Any) {
@@ -28,8 +41,12 @@ class PhotoViewController: UIViewController {
                 var image = UIImage(cgImage: cgImageRef!, scale: 1.0, orientation: UIImageOrientation.up)
                 let croppedImage = self.cropToPreviewLayer(originalImage: image)
                 self.capturedImage.image = croppedImage
+                
+                //prep for viewing
                 self.previewView.isHidden = true
                 self.capturedImage.isHidden = false
+                self.captureButton.isHidden = true
+                self.buttonView.isHidden = false
             })
         }
     }
@@ -73,6 +90,7 @@ class PhotoViewController: UIViewController {
         previewView.layer.addSublayer(previewLayer!)
         captureSession?.startRunning()
         capturedImage.isHidden = true
+        buttonView.isHidden = true
     }
     
     private func cropToPreviewLayer(originalImage: UIImage) -> UIImage {

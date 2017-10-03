@@ -7,6 +7,10 @@ class CheckViewController: UIViewController {
     
     var sideLabel: String?
     
+    override func viewDidAppear(_ animated: Bool) {
+        view.isHidden = false
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
