@@ -5,6 +5,8 @@ class CheckViewController: UIViewController {
     @IBOutlet weak var frontImage: UIImageView!
     @IBOutlet weak var rearImage: UIImageView!
     
+    var sideLabel: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -14,19 +16,15 @@ class CheckViewController: UIViewController {
         rearImage.addGestureRecognizer(rearTap)
     }
 
-    @objc func openCamera(){
+    @objc func openCamera(_ sender: UITapGestureRecognizer){
+        sideLabel = (sender.view == frontImage) ? "FRONT OF CHECK" : "BACK OF CHECK"
+        self.view.isHidden = true
         AppUtility.lockOrientation(.landscapeRight, andRotateTo: .landscapeRight)
         performSegue(withIdentifier: "showPhoto", sender: self)
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        let photoVC = segue.destination as! PhotoViewController
+        photoVC.labelString = sideLabel
     }
-    */
-
 }

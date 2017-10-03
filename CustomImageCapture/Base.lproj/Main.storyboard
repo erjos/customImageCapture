@@ -347,6 +347,7 @@
                         <outlet property="capturedImage" destination="opN-jM-QK1" id="WZn-4L-bxZ"/>
                         <outlet property="overlayView" destination="adV-64-Ic7" id="J4O-FO-QVi"/>
                         <outlet property="previewView" destination="w5D-lC-eWH" id="bGN-3b-1Ch"/>
+                        <outlet property="sideLabel" destination="q2l-fp-rIB" id="P3d-LY-wBy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

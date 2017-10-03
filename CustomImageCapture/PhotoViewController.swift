@@ -4,6 +4,9 @@ import Foundation
 
 class PhotoViewController: UIViewController {
 
+    var labelString: String?
+    
+    @IBOutlet weak var sideLabel: UILabel!
     @IBOutlet weak var overlayView: UIView!
     @IBOutlet weak var capturedImage: UIImageView!
     @IBOutlet weak var previewView: UIView!
@@ -94,6 +97,7 @@ class PhotoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        sideLabel.text = labelString!
         // Do any additional setup after loading the view, typically from a nib.
     }
 
