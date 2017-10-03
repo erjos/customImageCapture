@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		86ADF5211F82A730005449D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ADF5201F82A730005449D0 /* AppDelegate.swift */; };
-		86ADF5231F82A730005449D0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ADF5221F82A730005449D0 /* ViewController.swift */; };
+		86ADF5231F82A730005449D0 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ADF5221F82A730005449D0 /* PhotoViewController.swift */; };
 		86ADF5261F82A730005449D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86ADF5241F82A730005449D0 /* Main.storyboard */; };
 		86ADF5281F82A730005449D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 86ADF5271F82A730005449D0 /* Assets.xcassets */; };
 		86ADF52B1F82A730005449D0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86ADF5291F82A730005449D0 /* LaunchScreen.storyboard */; };
@@ -17,7 +17,7 @@
 /* Begin PBXFileReference section */
 		86ADF51D1F82A730005449D0 /* CustomImageCapture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CustomImageCapture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		86ADF5201F82A730005449D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		86ADF5221F82A730005449D0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		86ADF5221F82A730005449D0 /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		86ADF5251F82A730005449D0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		86ADF5271F82A730005449D0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		86ADF52A1F82A730005449D0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -55,7 +55,7 @@
 			isa = PBXGroup;
 			children = (
 				86ADF5201F82A730005449D0 /* AppDelegate.swift */,
-				86ADF5221F82A730005449D0 /* ViewController.swift */,
+				86ADF5221F82A730005449D0 /* PhotoViewController.swift */,
 				86ADF5241F82A730005449D0 /* Main.storyboard */,
 				86ADF5271F82A730005449D0 /* Assets.xcassets */,
 				86ADF5291F82A730005449D0 /* LaunchScreen.storyboard */,
@@ -136,7 +136,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				86ADF5231F82A730005449D0 /* ViewController.swift in Sources */,
+				86ADF5231F82A730005449D0 /* PhotoViewController.swift in Sources */,
 				86ADF5211F82A730005449D0 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -277,7 +277,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MNG4S554VZ;
 				INFOPLIST_FILE = CustomImageCapture/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = erj.CustomImageCapture;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -293,7 +293,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MNG4S554VZ;
 				INFOPLIST_FILE = CustomImageCapture/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = erj.CustomImageCapture;
 				PRODUCT_NAME = "$(TARGET_NAME)";

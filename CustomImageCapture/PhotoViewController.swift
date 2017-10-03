@@ -2,7 +2,7 @@ import UIKit
 import AVFoundation
 import Foundation
 
-class ViewController: UIViewController {
+class PhotoViewController: UIViewController {
 
     @IBOutlet weak var capturedImage: UIImageView!
     @IBOutlet weak var previewView: UIView!
@@ -14,12 +14,11 @@ class ViewController: UIViewController {
                 var imageData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(sampleBuffer!)
                 var dataProvider = CGDataProvider.init(data: imageData! as CFData)
                 var cgImageRef = CGImage.init(jpegDataProviderSource: dataProvider!, decode: nil, shouldInterpolate: true, intent: CGColorRenderingIntent.defaultIntent)
-                var image = UIImage(cgImage: cgImageRef!, scale: 1.0, orientation: UIImageOrientation.right)
+                var image = UIImage(cgImage: cgImageRef!, scale: 1.0, orientation: UIImageOrientation.up)
                 self.capturedImage.image = image
+                self.previewView.isHidden = true
+                self.capturedImage.isHidden = false
             })
-            //Below is what we would use for ios11
-            //let settings = AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.jpeg])
-            //stillImageOutput?.capturePhoto(with: settings , delegate: self)
         }
     }
     
@@ -33,7 +32,6 @@ class ViewController: UIViewController {
         
         //I think we want to change this to medium later as this resolution is too high
         captureSession!.sessionPreset = .photo
-        
         //configure the capture device
         var backCamera = AVCaptureDevice.default(for: .video)
         
@@ -59,12 +57,15 @@ class ViewController: UIViewController {
         previewLayer = AVCaptureVideoPreviewLayer(session: captureSession!)
             //add preview layer to view on storyboard
         previewLayer?.videoGravity = .resizeAspectFill
+        previewLayer?.connection?.videoOrientation = .landscapeRight
         previewView.layer.addSublayer(previewLayer!)
         captureSession?.startRunning()
+        capturedImage.isHidden = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
         //set the bounds of the preview to match that of the containing view
+        AppUtility.lockOrientation(.landscapeRight, andRotateTo: .landscapeRight)
         previewLayer!.frame = previewView.bounds
     }
     
