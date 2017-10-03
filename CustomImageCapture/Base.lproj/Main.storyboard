@@ -16,10 +16,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--View Controller-->
+        <!--Check View Controller-->
         <scene sceneID="kqQ-aW-SEi">
             <objects>
-                <viewController id="Tcc-Rl-ofZ" sceneMemberID="viewController">
+                <viewController id="Tcc-Rl-ofZ" customClass="CheckViewController" customModule="CustomImageCapture" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="o3J-Ak-M3H">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -53,7 +53,7 @@
                                     <constraint firstAttribute="height" constant="58" id="oeU-e8-wQY"/>
                                 </constraints>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera" translatesAutoresizingMaskIntoConstraints="NO" id="6bt-Jd-H0e">
+                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera" translatesAutoresizingMaskIntoConstraints="NO" id="6bt-Jd-H0e">
                                 <rect key="frame" x="210" y="399" width="135" height="100"/>
                                 <color key="backgroundColor" red="0.84527304599999997" green="0.84527304599999997" blue="0.84527304599999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -61,7 +61,7 @@
                                     <constraint firstAttribute="width" constant="135" id="r6p-I3-clk"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera" translatesAutoresizingMaskIntoConstraints="NO" id="19w-oH-p0y">
+                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera" translatesAutoresizingMaskIntoConstraints="NO" id="19w-oH-p0y">
                                 <rect key="frame" x="30" y="399" width="135" height="100"/>
                                 <color key="backgroundColor" red="0.84527304599999997" green="0.84527304599999997" blue="0.84527304599999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -149,6 +149,8 @@
                         <viewLayoutGuide key="safeArea" id="fk9-eV-BB6"/>
                     </view>
                     <connections>
+                        <outlet property="frontImage" destination="19w-oH-p0y" id="5S6-QB-haH"/>
+                        <outlet property="rearImage" destination="6bt-Jd-H0e" id="Hyo-kC-okX"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="showPhoto" id="lYb-jO-y8q"/>
                     </connections>
                 </viewController>

@@ -37,8 +37,8 @@ class PhotoViewController: UIViewController {
     var previewLayer: AVCaptureVideoPreviewLayer?
     
     override func viewWillAppear(_ animated: Bool) {
+       
         captureSession = AVCaptureSession()
-        
         //I think we want to change this to medium later as this resolution is too high
         captureSession!.sessionPreset = .photo
         //configure the capture device
@@ -86,8 +86,8 @@ class PhotoViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        
         //set the bounds of the preview to match that of the containing view
-        AppUtility.lockOrientation(.landscapeRight, andRotateTo: .landscapeRight)
         previewLayer!.frame = previewView.bounds
         self.view.bringSubview(toFront: overlayView)
     }
