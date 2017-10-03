@@ -4,10 +4,13 @@ import Foundation
 
 class PhotoViewController: UIViewController {
 
+    @IBOutlet weak var overlayView: UIView!
     @IBOutlet weak var capturedImage: UIImageView!
     @IBOutlet weak var previewView: UIView!
     @IBAction func didPressTakePhoto(_ sender: Any) {
         //Configure Data Connection
+        
+        
         if let videoConnection = stillImageOutput!.connection(with: .video){
             //now we have a connection object that has data flowing from our desired input to our desired output - we can capture
             stillImageOutput?.captureStillImageAsynchronously(from: videoConnection, completionHandler: {(sampleBuffer, error) in
@@ -15,7 +18,8 @@ class PhotoViewController: UIViewController {
                 var dataProvider = CGDataProvider.init(data: imageData! as CFData)
                 var cgImageRef = CGImage.init(jpegDataProviderSource: dataProvider!, decode: nil, shouldInterpolate: true, intent: CGColorRenderingIntent.defaultIntent)
                 var image = UIImage(cgImage: cgImageRef!, scale: 1.0, orientation: UIImageOrientation.up)
-                self.capturedImage.image = image
+                let croppedImage = self.cropToPreviewLayer(originalImage: image)
+                self.capturedImage.image = croppedImage
                 self.previewView.isHidden = true
                 self.capturedImage.isHidden = false
             })
@@ -63,10 +67,24 @@ class PhotoViewController: UIViewController {
         capturedImage.isHidden = true
     }
     
+    private func cropToPreviewLayer(originalImage: UIImage) -> UIImage {
+        let outputRect = previewLayer?.metadataOutputRectConverted(fromLayerRect: (previewLayer?.bounds)!)
+        var cgImage = originalImage.cgImage!
+        let width = CGFloat(cgImage.width)
+        let height = CGFloat(cgImage.height)
+        let cropRect = CGRect(x: (outputRect?.origin.x)! * width, y: (outputRect?.origin.y)! * height, width: (outputRect?.size.width)! * width, height: (outputRect?.size.height)! * height)
+        
+        cgImage = cgImage.cropping(to: cropRect)!
+        let croppedUIImage = UIImage(cgImage: cgImage, scale: 1.0, orientation: originalImage.imageOrientation)
+        
+        return croppedUIImage
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         //set the bounds of the preview to match that of the containing view
         AppUtility.lockOrientation(.landscapeRight, andRotateTo: .landscapeRight)
         previewLayer!.frame = previewView.bounds
+        self.view.bringSubview(toFront: overlayView)
     }
     
     override func viewDidLoad() {
