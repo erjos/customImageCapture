@@ -5,6 +5,7 @@ import Foundation
 class PhotoViewController: UIViewController {
 
     var labelString: String?
+    var croppedImage: UIImage?
     
     @IBOutlet weak var captureButton: UIButton!
     @IBOutlet weak var buttonView: UIView!
@@ -15,13 +16,11 @@ class PhotoViewController: UIViewController {
     
     @IBAction func didPressCancel(_ sender: Any) {
         AppUtility.lockOrientation(.portrait, andRotateTo: .portrait)
-        
-        //alternatively may be able to create an unwind inline using the unwind method
-        performSegue(withIdentifier: "unwindCheckView", sender: self)
+        self.dismiss(animated: true, completion: nil)
     }
     @IBAction func didPressUse(_ sender: Any) {
-        //store the UIIMage locally and in whatever format we need to pass that data to the service
-        //cache images
+        AppUtility.lockOrientation(.portrait, andRotateTo: .portrait)
+        //alternatively may be able to create an unwind inline using the unwind method
         performSegue(withIdentifier: "unwindCheckView", sender: self)
     }
     @IBAction func didPressRedo(_ sender: Any) {
@@ -44,8 +43,9 @@ class PhotoViewController: UIViewController {
                 var dataProvider = CGDataProvider.init(data: imageData! as CFData)
                 var cgImageRef = CGImage.init(jpegDataProviderSource: dataProvider!, decode: nil, shouldInterpolate: true, intent: CGColorRenderingIntent.defaultIntent)
                 var image = UIImage(cgImage: cgImageRef!, scale: 1.0, orientation: UIImageOrientation.up)
-                let croppedImage = self.cropToPreviewLayer(originalImage: image)
-                self.capturedImage.image = croppedImage
+                self.croppedImage = self.cropToPreviewLayer(originalImage: image)
+                
+                self.capturedImage.image = self.croppedImage
                 
                 //prep for viewing
                 self.previewView.isHidden = true

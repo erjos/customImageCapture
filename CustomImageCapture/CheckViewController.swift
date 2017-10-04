@@ -1,9 +1,14 @@
 import UIKit
+import Foundation
 
 class CheckViewController: UIViewController {
 
     @IBOutlet weak var frontImage: UIImageView!
     @IBOutlet weak var rearImage: UIImageView!
+    
+    //can convert these to type DATA by using UIImagePNGRepresentation() method to convert
+    var front: UIImage?
+    var back: UIImage?
     
     var sideLabel: String?
     
@@ -22,6 +27,17 @@ class CheckViewController: UIViewController {
     
     @IBAction func unwindToCheckView(_ segue: UIStoryboardSegue){
         let photoVC = segue.source as! PhotoViewController
+        guard let image = photoVC.croppedImage else {
+            return
+        }
+        
+        if(photoVC.labelString == "FRONT OF CHECK"){
+            front = image
+            frontImage.image = image
+        } else {
+            back = image
+            rearImage.image = image
+        }
     }
 
     @objc func openCamera(_ sender: UITapGestureRecognizer){
